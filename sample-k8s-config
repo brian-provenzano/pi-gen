@@ -5,3 +5,5 @@ KEYBOARD_LAYOUT="English (US)"
 TIMEZONE_DEFAULT="America/Denver"
 ENABLE_SSH="1"
 STAGE_LIST="stage0 stage1 stagek8s"
+
+STATIC_IP="1"
