@@ -7,6 +7,7 @@ echo ">> DO WE WANT STATIC IP SET? [${STATIC_IP}]"
 
 if [[ ! -z "${STATIC_IP}" ]]; then
     tee -a "${ROOTFS_DIR}/etc/dhcpcd.conf" <<EOF
+
 # override: set static IP
 interface eth0
 static ip_address=$ETH0_IPADDRESS

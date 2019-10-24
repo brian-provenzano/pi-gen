@@ -6,10 +6,14 @@ TIMEZONE_DEFAULT="America/Denver"
 ENABLE_SSH="1"
 STAGE_LIST="stage0 stage1 stagek8s"
 
-STATIC_IP="1"
-ETH0_IPADDRESS="10.0.0.200/24"
-ETH0_GATEWAY="10.0.0.1"
-ETH0_DNS="1.1.1.1 8.8.8.8"
-WLAN_IPADDRESS="10.0.0.200/24"
-WLAN_GATEWAY="10.0.0.1"
-WLAN_DNS="1.1.1.1 8.8.8.8"
+# rather than modify build.sh so we can make staying current with upstream easier
+# just export these manually before running the build.sh script.
+# Included here for reference...
+
+# export STATIC_IP="1"
+# export ETH0_IPADDRESS="10.0.0.200/24"
+# export ETH0_GATEWAY="10.0.0.1"
+# export ETH0_DNS="1.1.1.1 8.8.8.8"
+# export WLAN_IPADDRESS="10.0.0.200/24"
+# export WLAN_GATEWAY="10.0.0.1"
+# export WLAN_DNS="1.1.1.1 8.8.8.8"
