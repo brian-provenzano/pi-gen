@@ -1,3 +1,20 @@
+##
+# Example sample config file to use for a basic k3s node
+#
+# Build can be run in VM - make sure to use a 32bit Ubuntu 18.04LTS VM and have the needed pkg prereqs installed on the build VM
+# See Troubleshooting in README.md for details (basically make sure 'qemu-user-static' is installed)
+#
+# Usages / Getting Started :
+# 1. cp this to create a new file called 'config' in the root of the repo and mod as needed. Remove all the comments.
+#    The build.sh script uses this to customize.
+# 2. sudo ./build.sh to start the build.  The image zip will be placed in the /deploy directory.
+#    Use balenaEtcher to flash the image to sdcard and boot the Pi off it.  Pi should be available on the IP
+#    you specified in the config.  user: pi  password: raspberry
+  3. Once booted, you can use k3sup or the k3s installer directly on the pi to install k3s.
+
+## TODOS: may wrap all this into stagek8s (install k3s etc)
+##
+
 IMG_NAME="k3sNode"
 LOCALE_DEFAULT="en_US.UTF-8"
 KEYBOARD_KEYMAP="us"
@@ -6,9 +23,9 @@ TIMEZONE_DEFAULT="America/Denver"
 ENABLE_SSH="1"
 STAGE_LIST="stage0 stage1 stagek8s"
 
-# rather than modify build.sh so we can make staying current with upstream easier
-# just export these manually before running the build.sh script.
-# Included here for reference...
+# modded the build.sh script to expect these (this means merging when pulling from upstream :( but 
+# was the easiest for now.  will revisit...)
+# Sets some static IPs on various interfaces. See stagek8s/06-network-static/00-run.sh for details.
 
 STATIC_IP="1"
 ETH0_IPADDRESS="10.0.0.200/24"
