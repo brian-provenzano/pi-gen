@@ -5,7 +5,7 @@
 ##
 
 if [[ ! -z "${STATIC_IP}" ]]; then
-    tee -a /etc/dhcpcd.conf <<EOF
+    tee -a "${ROOTFS_DIR}"/etc/dhcpcd.conf <<EOF
 # override: set static IP
 interface eth0
 static ip_address=$ETH0_IPADDRESS
@@ -20,4 +20,5 @@ EOF
 fi
 
 echo ">> CHECK IF MODDED DHCPCD.CONF"
-cat /etc/dhcpcd.conf
+echo "${ROOTFS_DIR}"
+cat "${ROOTFS_DIR}/etc/dhcpcd.conf"
