@@ -18,3 +18,6 @@ static routers=10.0.0.1
 static domain_name_servers=1.1.1.1 8.8.8.8
 EOF
 fi
+
+echo ">> CHECK IF MODDED DHCPCD.CONF"
+cat /etc/dhcpcd.conf
