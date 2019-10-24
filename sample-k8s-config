@@ -10,12 +10,25 @@
 # 2. sudo ./build.sh to start the build.  The image zip will be placed in the /deploy directory.
 #    Use balenaEtcher to flash the image to sdcard and boot the Pi off it.  Pi should be available on the IP
 #    you specified in the config.  user: pi  password: raspberry
-  3. Once booted, you can use k3sup or the k3s installer directly on the pi to install k3s.
-
+# 3. Once booted, you can use k3sup or the k3s installer directly on the pi to install k3s.
+# 4. You may wish to repeat for each node to create an image per node that is fully configured and ready for k3s
+#
+## USING K3SUP : https://github.com/alexellis/k3sup
+# 1. Server:
+# ssh-copy-id pi@10.0.0.200 && k3sup install --ip 10.0.0.200 --user pi --context pi4-k3s --local-path ~/k3s-kubeconfig
+#
+# 2. Add agent/worker(s):
+# k3sup join --ip 10.0.0.201 --server-ip 10.0.0.200 --user pi
+#
 ## TODOS: may wrap all this into stagek8s (install k3s etc)
+#
+## NOTES:
+# modded the build.sh script to expect these (this means careful mergin when pulling from upstream :() BUT... 
+# was the easiest for now.  Will revisit)
+# Sets some static IPs on various interfaces. See stagek8s/06-network-static/00-run.sh for details.
 ##
 
-IMG_NAME="k3sNode"
+IMG_NAME="k3sNodeMaster"
 LOCALE_DEFAULT="en_US.UTF-8"
 KEYBOARD_KEYMAP="us"
 KEYBOARD_LAYOUT="English (US)"
@@ -23,10 +36,7 @@ TIMEZONE_DEFAULT="America/Denver"
 ENABLE_SSH="1"
 STAGE_LIST="stage0 stage1 stagek8s"
 
-# modded the build.sh script to expect these (this means merging when pulling from upstream :( but 
-# was the easiest for now.  will revisit...)
-# Sets some static IPs on various interfaces. See stagek8s/06-network-static/00-run.sh for details.
-
+# added - not in upstream
 STATIC_IP="1"
 ETH0_IPADDRESS="10.0.0.200/24"
 ETH0_GATEWAY="10.0.0.1"
@@ -34,3 +44,4 @@ ETH0_DNS="1.1.1.1 8.8.8.8"
 WLAN_IPADDRESS="10.0.0.200/24"
 WLAN_GATEWAY="10.0.0.1"
 WLAN_DNS="1.1.1.1 8.8.8.8"
+HOSTNAME="k3s-master"

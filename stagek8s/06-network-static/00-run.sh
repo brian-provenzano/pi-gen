@@ -26,3 +26,10 @@ fi
 echo ">> CHECK IF MODDED DHCPCD.CONF"
 echo "${ROOTFS_DIR}"
 cat "${ROOTFS_DIR}/etc/dhcpcd.conf"
+
+# set the hostname
+echo ">> SET HOSTNAME TO [${HOSTNAME}]"
+
+on_chroot << EOF
+hostnamectl set-hostname ${HOSTNAME}
+EOF
