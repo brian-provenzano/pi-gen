@@ -209,7 +209,7 @@ export ETH0_DNS
 export WLAN_IPADDRESS
 export WLAN_GATEWAY
 export WLAN_DNS
-export HOSTNAME="raspberry-pi"
+export HOSTNAME="${HOSTNAME:-raspberry-pi}"
 
 # shellcheck source=scripts/common
 source "${SCRIPT_DIR}/common"

@@ -24,12 +24,14 @@ EOF
 fi
 
 echo ">> CHECK IF MODDED DHCPCD.CONF"
-echo "${ROOTFS_DIR}"
 cat "${ROOTFS_DIR}/etc/dhcpcd.conf"
 
 # set the hostname
 echo ">> SET HOSTNAME TO [${HOSTNAME}]"
 
-on_chroot << EOF
-hostnamectl set-hostname ${HOSTNAME}
-EOF
+sed -i "s/raspberrypi/${HOSTNAME}/g" "${ROOTFS_DIR}/etc/hostname"
+sed -i "s/raspberrypi/${HOSTNAME}/g" "${ROOTFS_DIR}/etc/hosts"
+
+echo ">> CONFIRM HOSTNAME SET TO [${HOSTNAME}]"
+cat "${ROOTFS_DIR}/etc/hostname"
+cat "${ROOTFS_DIR}/etc/hosts"
