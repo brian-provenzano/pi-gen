@@ -5,7 +5,7 @@
 # See Troubleshooting in README.md for details (basically make sure 'qemu-user-static' is installed)
 #
 # Usages / Getting Started :
-# 1. cp this to create a new file called 'config' in the root of the repo and mod as needed.  !! Remove all the comments. !!
+# 1. cp this sample to a new file called 'config' in the root of the repo and mod as needed.  !! Remove all the comments. !!
 #    Use this as your config.  The build.sh script will uses this to customize your image.
 # 2. sudo ./build.sh to start the build.  The image zip will be placed in the /deploy directory.
 #    Use balenaEtcher to flash the image to sdcard and boot the Pi off it.  Pi should be available on the IP
